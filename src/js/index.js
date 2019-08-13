@@ -58,7 +58,7 @@ class Framework extends BaseApp {
         let year = populationData[0];
         let countryScale;
         for (let i=0; i<APPCONFIG.NUM_COUNTRIES; ++i) {
-            countryScale = year[i+1]/APPCONFIG.MILLION * 5;
+            countryScale = year[i+1]/APPCONFIG.MILLION * 7.5;
             countryColumns[i].scale.set(1, countryScale, 1);
             countryColumns[i].position.y += (countryScale/2);
         }

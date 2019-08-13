@@ -2,4 +2,12 @@
 body {
     margin: 0;
     overflow: hidden;
+    color: orange;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.title {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
 }
