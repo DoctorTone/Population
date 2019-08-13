@@ -1,6 +1,8 @@
 import $ from "jquery";
 import * as THREE from "three";
 
+import { APPCONFIG } from "./appConfig";
+
 import { BaseApp } from "./baseApp";
 
 class Framework extends BaseApp {
@@ -23,8 +25,8 @@ class Framework extends BaseApp {
         this.root = new THREE.Object3D();
         this.addToScene(this.root);
 
-        // Add simple 3D object
-        const boxGeom = new THREE.BoxBufferGeometry(10, 10, 10);
+        // Add base for map
+        const boxGeom = new THREE.BoxBufferGeometry(APPCONFIG.BASE_WIDTH, APPCONFIG.BASE_HEIGHT, APPCONFIG.BASE_DEPTH);
         const boxMat = new THREE.MeshLambertMaterial( {color: 0xff0000});
         const boxMesh = new THREE.Mesh(boxGeom, boxMat);
         this.root.add(boxMesh);
