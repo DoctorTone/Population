@@ -31,8 +31,7 @@ class Framework extends BaseApp {
         // Map texture
         let textureLoader = new THREE.TextureLoader();
         let mapTexture1 = textureLoader.load("./textures/ukMap.jpg");
-        mapTexture1.wrapS = mapTexture1.wrapT = THREE.RepeatWrapping;
-		mapTexture1.repeat.set( 1, 1 );
+        
         // Add base for map
         const planeGeom = new THREE.PlaneBufferGeometry(APPCONFIG.BASE_WIDTH, APPCONFIG.BASE_HEIGHT, APPCONFIG.SEGMENTS, APPCONFIG.SEGMENTS);
         //const boxGeom = new THREE.BoxBufferGeometry(APPCONFIG.BASE_WIDTH, APPCONFIG.BASE_HEIGHT, APPCONFIG.BASE_HEIGHT, APPCONFIG.SEGMENTS, APPCONFIG.SEGMENTS);
@@ -45,6 +44,9 @@ class Framework extends BaseApp {
         const boxGeom = new THREE.BoxBufferGeometry(APPCONFIG.COLUMN_WIDTH, APPCONFIG.COLUMN_HEIGHT, APPCONFIG.COLUMN_DEPTH, APPCONFIG.COLUMN_SEGMENTS, APPCONFIG.COLUMN_SEGMENTS);
         const boxMat = new THREE.MeshLambertMaterial( {color: APPCONFIG.ENGLAND_COLOUR} );
         const boxMesh = new THREE.Mesh(boxGeom, boxMat);
+        boxMesh.position.set(APPCONFIG.ENGLAND_POS.x, APPCONFIG.ENGLAND_POS.y, APPCONFIG.ENGLAND_POS.z);
+        let scale = 1;
+        boxMesh.position.y += (scale/2);
         this.root.add(boxMesh);
     }
 }
