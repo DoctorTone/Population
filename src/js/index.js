@@ -5,6 +5,8 @@ import { APPCONFIG } from "./appConfig";
 
 import { BaseApp } from "./baseApp";
 
+import populationData from "../../data/populationData.json";
+
 class Framework extends BaseApp {
     constructor() {
         super();
@@ -15,6 +17,7 @@ class Framework extends BaseApp {
     }
 
     init(container) {
+        this.container = container;
         super.init(container);
     }
 
@@ -25,9 +28,22 @@ class Framework extends BaseApp {
         this.root = new THREE.Object3D();
         this.addToScene(this.root);
 
+        // Map texture
+        let textureLoader = new THREE.TextureLoader();
+        let mapTexture1 = textureLoader.load("./textures/ukMap.jpg");
+        mapTexture1.wrapS = mapTexture1.wrapT = THREE.RepeatWrapping;
+		mapTexture1.repeat.set( 1, 1 );
         // Add base for map
-        const boxGeom = new THREE.BoxBufferGeometry(APPCONFIG.BASE_WIDTH, APPCONFIG.BASE_HEIGHT, APPCONFIG.BASE_DEPTH);
-        const boxMat = new THREE.MeshLambertMaterial( {color: 0xff0000});
+        const planeGeom = new THREE.PlaneBufferGeometry(APPCONFIG.BASE_WIDTH, APPCONFIG.BASE_HEIGHT, APPCONFIG.SEGMENTS, APPCONFIG.SEGMENTS);
+        //const boxGeom = new THREE.BoxBufferGeometry(APPCONFIG.BASE_WIDTH, APPCONFIG.BASE_HEIGHT, APPCONFIG.BASE_HEIGHT, APPCONFIG.SEGMENTS, APPCONFIG.SEGMENTS);
+        const planeMat = new THREE.MeshLambertMaterial( {map: mapTexture1} );
+        const planeMesh = new THREE.Mesh(planeGeom, planeMat);
+        planeMesh.rotation.x = -Math.PI/2;
+        this.root.add(planeMesh);
+
+        // Add population data
+        const boxGeom = new THREE.BoxBufferGeometry(APPCONFIG.COLUMN_WIDTH, APPCONFIG.COLUMN_HEIGHT, APPCONFIG.COLUMN_DEPTH, APPCONFIG.COLUMN_SEGMENTS, APPCONFIG.COLUMN_SEGMENTS);
+        const boxMat = new THREE.MeshLambertMaterial( {color: APPCONFIG.ENGLAND_COLOUR} );
         const boxMesh = new THREE.Mesh(boxGeom, boxMat);
         this.root.add(boxMesh);
     }
@@ -37,7 +53,6 @@ $(document).ready( () => {
     
     const container = document.getElementById("WebGL-Output");
     const app = new Framework();
-    app.setContainer(container);
 
     app.init(container);
     app.createScene();

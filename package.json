@@ -22,6 +22,7 @@
   "dependencies": {
     "controlkit": "^0.1.9",
     "jquery": "^3.4.1",
+    "textures": "^1.2.2",
     "three": "^0.107.0",
     "three-trackballcontrols": "0.0.8"
   }
