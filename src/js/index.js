@@ -42,15 +42,26 @@ class Framework extends BaseApp {
 
         // Add population data
         const boxGeom = new THREE.BoxBufferGeometry(APPCONFIG.COLUMN_WIDTH, APPCONFIG.COLUMN_HEIGHT, APPCONFIG.COLUMN_DEPTH, APPCONFIG.COLUMN_SEGMENTS, APPCONFIG.COLUMN_SEGMENTS);
-        const boxMat = new THREE.MeshLambertMaterial( {color: APPCONFIG.ENGLAND_COLOUR} );
-        const boxMesh = new THREE.Mesh(boxGeom, boxMat);
-        boxMesh.position.set(APPCONFIG.ENGLAND_POS.x, APPCONFIG.ENGLAND_POS.y, APPCONFIG.ENGLAND_POS.z);
+        // Set up geometry for each country
+        let boxMat;
+        let boxMesh;
+        let countryColumns = [];
+        for (let i=0; i<APPCONFIG.NUM_COUNTRIES; ++i) {
+            boxMat = new THREE.MeshLambertMaterial( {color: APPCONFIG.COUNTRY_COLOURS[i]} );
+            boxMesh = new THREE.Mesh(boxGeom, boxMat);
+            boxMesh.position.copy(APPCONFIG.COUNTRY_POS[i]);
+            countryColumns.push(boxMesh);
+            this.root.add(boxMesh);
+        }
+        
         // Get first year
+        /*
         let year = populationData[0];
         let englandScale = year[1]/APPCONFIG.MILLION * 5;
         boxMesh.scale.set(1, englandScale, 1);
         boxMesh.position.y += (englandScale/2);
         this.root.add(boxMesh);
+        */
     }
 }
 

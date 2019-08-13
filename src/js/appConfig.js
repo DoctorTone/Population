@@ -8,7 +8,36 @@ const APPCONFIG = {
     COLUMN_HEIGHT: 1,
     COLUMN_DEPTH: 20,
     COLUMN_SEGMENTS: 16,
-    ENGLAND_COLOUR: 0xff0000,
+    NUM_COUNTRIES: 4,
+    // England, Wales, Northern Ireland, Scotland
+    COUNTRY_COLOURS: [
+        0xff0000,
+        0x00ff00,
+        0xff00ff,
+        0x0000ff
+    ],
+    COUNTRY_POS: [
+        {
+            x: 250,
+            y: 0,
+            z: 225
+        },
+        {
+            x: 50,
+            y: 0,
+            z: 250
+        },
+        {
+            x: -150,
+            y: 0,
+            z: -30
+        },
+        {
+            x: 25,
+            y: 0,
+            z: -250
+        }
+    ],
     ENGLAND_POS: {
         x: 250,
         y: 0,
