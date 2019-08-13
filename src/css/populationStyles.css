@@ -11,3 +11,15 @@ body {
     width: 100%;
     text-align: center;
 }
+.panel {
+    position: absolute;
+    text-align: center;
+}
+#controls {
+    width: 7.5%;
+    top: 1%;
+    right: 1%;
+}
+#controls img {
+    width: 100%;
+}
