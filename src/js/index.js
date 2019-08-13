@@ -55,13 +55,13 @@ class Framework extends BaseApp {
         }
         
         // Get first year
-        /*
         let year = populationData[0];
-        let englandScale = year[1]/APPCONFIG.MILLION * 5;
-        boxMesh.scale.set(1, englandScale, 1);
-        boxMesh.position.y += (englandScale/2);
-        this.root.add(boxMesh);
-        */
+        let countryScale;
+        for (let i=0; i<APPCONFIG.NUM_COUNTRIES; ++i) {
+            countryScale = year[i+1]/APPCONFIG.MILLION * 5;
+            countryColumns[i].scale.set(1, countryScale, 1);
+            countryColumns[i].position.y += (countryScale/2);
+        }
     }
 }
 
