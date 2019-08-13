@@ -45,8 +45,11 @@ class Framework extends BaseApp {
         const boxMat = new THREE.MeshLambertMaterial( {color: APPCONFIG.ENGLAND_COLOUR} );
         const boxMesh = new THREE.Mesh(boxGeom, boxMat);
         boxMesh.position.set(APPCONFIG.ENGLAND_POS.x, APPCONFIG.ENGLAND_POS.y, APPCONFIG.ENGLAND_POS.z);
-        let scale = 1;
-        boxMesh.position.y += (scale/2);
+        // Get first year
+        let year = populationData[0];
+        let englandScale = year[1]/APPCONFIG.MILLION * 5;
+        boxMesh.scale.set(1, englandScale, 1);
+        boxMesh.position.y += (englandScale/2);
         this.root.add(boxMesh);
     }
 }

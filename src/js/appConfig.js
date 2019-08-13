@@ -13,7 +13,8 @@ const APPCONFIG = {
         x: 250,
         y: 0,
         z: 225
-    }
+    },
+    MILLION: 1000000
 }
 
 export { APPCONFIG };
