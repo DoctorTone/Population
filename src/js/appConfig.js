@@ -9,6 +9,9 @@ const APPCONFIG = {
     COLUMN_DEPTH: 20,
     COLUMN_SEGMENTS: 16,
     NUM_COUNTRIES: 4,
+    UPDATE_INTERVAL: 0.25,
+    TIME_SPAN: 47,
+    SCALE_FACTOR: 30,
     // England, Wales, Northern Ireland, Scotland
     COUNTRY_COLOURS: [
         0xff0000,

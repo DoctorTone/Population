@@ -10,6 +10,8 @@ import populationData from "../../data/populationData.json";
 class Framework extends BaseApp {
     constructor() {
         super();
+        this.currentYear = 0;
+        this.playing = false;
     }
 
     setContainer(container) {
@@ -58,10 +60,39 @@ class Framework extends BaseApp {
         let year = populationData[0];
         let countryScale;
         for (let i=0; i<APPCONFIG.NUM_COUNTRIES; ++i) {
-            countryScale = year[i+1]/APPCONFIG.MILLION * 7.5;
+            countryScale = year[i+1]/APPCONFIG.MILLION;
+            countryScale *= APPCONFIG.SCALE_FACTOR;
             countryColumns[i].scale.set(1, countryScale, 1);
             countryColumns[i].position.y += (countryScale/2);
         }
+        this.countryColumns = countryColumns;
+    }
+
+    update() {
+        let delta = this.clock.getDelta();
+        if (this.playing) {
+            this.elapsedTime += delta;
+            if (this.elapsedTime >= APPCONFIG.UPDATE_INTERVAL) {
+                this.elapsedTime = 0;
+                // Get next year's data
+                if(++this.currentYear < APPCONFIG.TIME_SPAN) {
+                    let year = populationData[this.currentYear];
+                    let countryScale;
+                    for (let i=0; i<APPCONFIG.NUM_COUNTRIES; ++i) {
+                        countryScale = year[i+1]/APPCONFIG.MILLION;
+                        countryScale *= APPCONFIG.SCALE_FACTOR;
+                        this.countryColumns[i].scale.set(1, countryScale, 1);
+                        this.countryColumns[i].position.y = (countryScale/2);
+                    }
+                }
+            }
+        }
+
+        super.update();
+    }
+
+    playAnimation() {
+        this.playing = true;
     }
 }
 
@@ -74,4 +105,9 @@ $(document).ready( () => {
     app.createScene();
 
     app.run();
+
+    // Play controls
+    $("#play").on("click", () => {
+        app.playAnimation();
+    });
 });
