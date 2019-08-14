@@ -106,8 +106,8 @@ class Framework extends BaseApp {
         super.update();
     }
 
-    playAnimation() {
-        this.playing = true;
+    toggleAnimation() {
+        this.playing = !this.playing;
     }
 }
 
@@ -123,6 +123,6 @@ $(document).ready( () => {
 
     // Play controls
     $("#play").on("click", () => {
-        app.playAnimation();
+        app.toggleAnimation();
     });
 });
