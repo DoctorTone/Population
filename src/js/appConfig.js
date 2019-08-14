@@ -5,13 +5,13 @@ const APPCONFIG = {
     BASE_HEIGHT: 1000,
     BASE_COLOUR: 0xffffff,
     COLUMN_WIDTH: 20,
-    COLUMN_HEIGHT: 1,
+    COLUMN_HEIGHT: 10,
     COLUMN_DEPTH: 20,
     COLUMN_SEGMENTS: 16,
     NUM_COUNTRIES: 4,
-    UPDATE_INTERVAL: 0.25,
-    TIME_SPAN: 47,
-    SCALE_FACTOR: 30,
+    UPDATE_INTERVAL: 0.15,
+    TIME_SPAN: 48,
+    SCALE_FACTOR: 1,
     // England, Wales, Northern Ireland, Scotland
     COUNTRY_COLOURS: [
         0xff0000,

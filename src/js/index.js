@@ -56,16 +56,25 @@ class Framework extends BaseApp {
             this.root.add(boxMesh);
         }
         
-        // Get first year
-        let year = populationData[0];
-        let countryScale;
-        for (let i=0; i<APPCONFIG.NUM_COUNTRIES; ++i) {
-            countryScale = year[i+1]/APPCONFIG.MILLION;
-            countryScale *= APPCONFIG.SCALE_FACTOR;
-            countryColumns[i].scale.set(1, countryScale, 1);
-            countryColumns[i].position.y += (countryScale/2);
-        }
         this.countryColumns = countryColumns;
+
+        // Get population differences
+        let populationDiff = [];
+        let yearlyDiff = [];
+        let yearOne = populationData[0];
+        let currentYear;
+        let diff;
+        for (let year=1; year<APPCONFIG.TIME_SPAN; ++year) {
+            currentYear = populationData[year];
+            for (let i=0; i<APPCONFIG.NUM_COUNTRIES; ++i) {
+                diff = currentYear[i+1] - yearOne[i+1];
+                yearlyDiff.push(diff);
+            }
+            populationDiff.push([...yearlyDiff]);
+            yearlyDiff.length = 0;
+        }
+        
+        this.populationDiff = populationDiff;
     }
 
     update() {
@@ -75,16 +84,17 @@ class Framework extends BaseApp {
             if (this.elapsedTime >= APPCONFIG.UPDATE_INTERVAL) {
                 this.elapsedTime = 0;
                 // Get next year's data
-                if(++this.currentYear < APPCONFIG.TIME_SPAN) {
-                    let year = populationData[this.currentYear];
+                if(this.currentYear < (APPCONFIG.TIME_SPAN-1)) {
+                    let year = this.populationDiff[this.currentYear];
                     let countryScale;
                     for (let i=0; i<APPCONFIG.NUM_COUNTRIES; ++i) {
-                        countryScale = year[i+1]/APPCONFIG.MILLION;
+                        countryScale = year[i]/100000;
                         countryScale *= APPCONFIG.SCALE_FACTOR;
                         this.countryColumns[i].scale.set(1, countryScale, 1);
-                        this.countryColumns[i].position.y = (countryScale/2);
+                        this.countryColumns[i].position.y = countryScale*APPCONFIG.COLUMN_HEIGHT/2;
                     }
                 }
+                ++this.currentYear;
             }
         }
 
