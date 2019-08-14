@@ -12,6 +12,7 @@ class Framework extends BaseApp {
         super();
         this.currentYear = 0;
         this.playing = false;
+        this.displayYear = 1971;
     }
 
     setContainer(container) {
@@ -93,8 +94,12 @@ class Framework extends BaseApp {
                         this.countryColumns[i].scale.set(1, countryScale, 1);
                         this.countryColumns[i].position.y = countryScale*APPCONFIG.COLUMN_HEIGHT/2;
                     }
+                } else {
+                    this.playing = false;
                 }
                 ++this.currentYear;
+                let displayYear = this.displayYear + this.currentYear;
+                $("#year").html(displayYear);
             }
         }
 
