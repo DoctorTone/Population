@@ -12,6 +12,7 @@ class Framework extends BaseApp {
         super();
         this.currentYear = 0;
         this.playing = false;
+        this.completed = false;
         this.displayYear = 1971;
     }
 
@@ -94,12 +95,12 @@ class Framework extends BaseApp {
                         this.countryColumns[i].scale.set(1, countryScale, 1);
                         this.countryColumns[i].position.y = countryScale*APPCONFIG.COLUMN_HEIGHT/2;
                     }
+                    ++this.currentYear;
+                    let displayYear = this.displayYear + this.currentYear;
+                    $("#year").html(displayYear);
                 } else {
-                    this.playing = false;
+                    this.resetAnimation();
                 }
-                ++this.currentYear;
-                let displayYear = this.displayYear + this.currentYear;
-                $("#year").html(displayYear);
             }
         }
 
@@ -110,6 +111,14 @@ class Framework extends BaseApp {
         this.playing = !this.playing;
         let elem = $('#play');
         elem.attr("src", this.playing ? "images/pause-button.png" : "images/play-button.png");
+    }
+
+    resetAnimation() {
+        this.playing = false;
+        this.completed = true;
+        let elem = $('#play');
+        elem.attr("src", "images/play-button.png");
+        this.currentYear = 0;
     }
 }
 
