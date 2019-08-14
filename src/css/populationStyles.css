@@ -5,11 +5,12 @@ body {
     color: orange;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.title {
+.titleLeft {
     position: absolute;
     top: 0;
     width: 100%;
-    text-align: center;
+    text-align: left;
+    margin-left: 10px;
 }
 .panel {
     position: absolute;
