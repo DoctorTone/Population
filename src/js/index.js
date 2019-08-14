@@ -88,7 +88,7 @@ class Framework extends BaseApp {
             labelProperty.position.y += APPCONFIG.VALUE_OFFSET;
             labelProperty.visibility = true;
             labelProperty.scale = APPCONFIG.VALUE_SCALE;
-            label = this.labelManager.create("valueLabel", "0", labelProperty);
+            label = this.labelManager.create("valueLabel", "00000", labelProperty);
             this.root.add(label.getSprite());
             populationLabels.push(label);
         }
