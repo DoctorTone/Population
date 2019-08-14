@@ -108,6 +108,8 @@ class Framework extends BaseApp {
 
     toggleAnimation() {
         this.playing = !this.playing;
+        let elem = $('#play');
+        elem.attr("src", this.playing ? "images/pause-button.png" : "images/play-button.png");
     }
 }
 
