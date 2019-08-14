@@ -46,6 +46,11 @@ const APPCONFIG = {
         y: 0,
         z: 225
     },
+    VALUE_SCALE: {
+        x: 100,
+        y: 25,
+        z: 1
+    },
     MILLION: 1000000
 }
 

@@ -1,10 +1,8 @@
 import $ from "jquery";
 import * as THREE from "three";
-
 import { APPCONFIG } from "./appConfig";
-
 import { BaseApp } from "./baseApp";
-
+import { LabelManager } from "./LabelManager";
 import populationData from "../../data/populationData.json";
 
 class Framework extends BaseApp {
@@ -14,6 +12,7 @@ class Framework extends BaseApp {
         this.playing = false;
         this.completed = false;
         this.displayYear = 1971;
+        this.labelManager = new LabelManager();
     }
 
     setContainer(container) {
@@ -77,6 +76,17 @@ class Framework extends BaseApp {
         }
         
         this.populationDiff = populationDiff;
+
+        // Add labels
+        // Label properties
+        let labelProperty = {};
+        labelProperty.position = new THREE.Vector3();
+        labelProperty.position.copy(countryColumns[0].position);
+        labelProperty.position.y += 20;
+        labelProperty.visibility = true;
+        labelProperty.scale = APPCONFIG.VALUE_SCALE;
+        let label = this.labelManager.create("valueLabel", "12000", labelProperty);
+        this.root.add(label.getSprite());
     }
 
     update() {
