@@ -127,7 +127,7 @@ class Framework extends BaseApp {
         }
 
         if (this.cameraRotate) {
-            this.root.rotation.y += (this.rotSpeed * this.rotDirection * delta);
+            this.root.rotation[this.rotAxis] += (this.rotSpeed * this.rotDirection * delta);
         }
 
         super.update();
@@ -148,7 +148,31 @@ class Framework extends BaseApp {
     }
 
     rotateCamera(status, direction) {
-        this.rotDirection = direction === APPCONFIG.RIGHT ? 1 : -1;
+        switch (direction) {
+            case APPCONFIG.RIGHT:
+                this.rotDirection = 1;
+                this.rotAxis = `y`;
+                break;
+
+            case APPCONFIG.LEFT:
+                this.rotDirection = -1;
+                this.rotAxis = `y`;
+                break;
+
+            case APPCONFIG.UP:
+                this.rotDirection = 1;
+                this.rotAxis = `x`;
+                break;
+
+            case APPCONFIG.DOWN:
+                this.rotDirection = -1;
+                this.rotAxis = `x`;
+                break;
+
+            default:
+                break;
+        };
+         
         this.cameraRotate = status;
     }
 }
@@ -167,6 +191,8 @@ $(document).ready( () => {
     let play = $("#play");
     let rotateLeft = $("#rotateLeft");
     let rotateRight = $("#rotateRight");
+    let rotateUp = $("#rotateUp");
+    let rotateDown = $("#rotateDown");
 
     // Play controls
     play.on("click", () => {
@@ -186,6 +212,22 @@ $(document).ready( () => {
     });
 
     rotateRight.on("mouseup", () => {
+        app.rotateCamera(false);
+    });
+
+    rotateUp.on("mousedown", () => {
+        app.rotateCamera(true, APPCONFIG.UP);
+    });
+
+    rotateUp.on("mouseup", () => {
+        app.rotateCamera(false);
+    });
+
+    rotateDown.on("mousedown", () => {
+        app.rotateCamera(true, APPCONFIG.DOWN);
+    });
+
+    rotateDown.on("mouseup", () => {
         app.rotateCamera(false);
     });
 });
