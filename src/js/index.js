@@ -79,14 +79,20 @@ class Framework extends BaseApp {
 
         // Add labels
         // Label properties
+        let label;
+        let populationLabels = [];
         let labelProperty = {};
         labelProperty.position = new THREE.Vector3();
-        labelProperty.position.copy(countryColumns[0].position);
-        labelProperty.position.y += 20;
-        labelProperty.visibility = true;
-        labelProperty.scale = APPCONFIG.VALUE_SCALE;
-        let label = this.labelManager.create("valueLabel", "12000", labelProperty);
-        this.root.add(label.getSprite());
+        for (let i=0; i<APPCONFIG.NUM_COUNTRIES; ++i) {
+            labelProperty.position.copy(countryColumns[i].position);
+            labelProperty.position.y += APPCONFIG.VALUE_OFFSET;
+            labelProperty.visibility = true;
+            labelProperty.scale = APPCONFIG.VALUE_SCALE;
+            label = this.labelManager.create("valueLabel", "0", labelProperty);
+            this.root.add(label.getSprite());
+            populationLabels.push(label);
+        }
+        this.populationLabels = populationLabels;
     }
 
     update() {
