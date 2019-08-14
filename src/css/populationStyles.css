@@ -41,3 +41,11 @@ body {
 #rotate img {
     width: 100%;
 }
+#info {
+    bottom: 1%;
+    right: 1%;
+    width: 5%;
+}
+#info img {
+    width: 100%;
+}
