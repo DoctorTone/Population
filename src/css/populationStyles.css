@@ -16,6 +16,12 @@ body {
     position: absolute;
     text-align: center;
 }
+.copyright {
+    position: absolute;
+    bottom: 1%;
+    left: 1%;
+    width: 100%;
+}
 #controls {
     width: 7.5%;
     top: 1%;
