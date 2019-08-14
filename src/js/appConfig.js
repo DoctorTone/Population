@@ -56,6 +56,7 @@ const APPCONFIG = {
     LEFT: 0,
     UP: 2,
     DOWN: 3,
+    ZOOM_SPEED: 0.1,
     MILLION: 1000000
 }
 

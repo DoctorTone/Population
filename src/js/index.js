@@ -16,6 +16,12 @@ class Framework extends BaseApp {
         this.cameraRotate = false;
         this.rotSpeed = Math.PI/20;
         this.rotDirection = 1;
+        this.zoomingIn = false;
+        this.zoomingOut = false;
+        this.zoomSpeed = APPCONFIG.ZOOM_SPEED;
+
+        //Temp variables
+        this.tempVec = new THREE.Vector3();
     }
 
     setContainer(container) {
@@ -130,6 +136,22 @@ class Framework extends BaseApp {
             this.root.rotation[this.rotAxis] += (this.rotSpeed * this.rotDirection * delta);
         }
 
+        if(this.zoomingIn) {
+            this.tempVec.copy(this.camera.position);
+            this.tempVec.multiplyScalar(this.zoomSpeed * delta);
+            this.root.position.add(this.tempVec);
+            //DEBUG
+            //console.log("Root = ", this.root.position);
+        }
+
+        if(this.zoomingOut) {
+            this.tempVec.copy(this.camera.position);
+            this.tempVec.multiplyScalar(this.zoomSpeed * delta);
+            this.root.position.sub(this.tempVec);
+            //DEBUG
+            //console.log("Root = ", this.root.position);
+        }
+
         super.update();
     }
 
@@ -175,6 +197,14 @@ class Framework extends BaseApp {
          
         this.cameraRotate = status;
     }
+
+    zoomIn(status) {
+        this.zoomingIn = status;
+    }
+
+    zoomOut(status) {
+        this.zoomingOut = status;
+    }
 }
 
 $(document).ready( () => {
@@ -193,6 +223,8 @@ $(document).ready( () => {
     let rotateRight = $("#rotateRight");
     let rotateUp = $("#rotateUp");
     let rotateDown = $("#rotateDown");
+    let zoomIn = $("#zoomIn");
+    let zoomOut = $("#zoomOut");
 
     // Play controls
     play.on("click", () => {
@@ -229,5 +261,21 @@ $(document).ready( () => {
 
     rotateDown.on("mouseup", () => {
         app.rotateCamera(false);
+    });
+
+    zoomIn.on("mousedown", () => {
+        app.zoomIn(true);
+    });
+
+    zoomIn.on("mouseup", () => {
+        app.zoomIn(false);
+    });
+
+    zoomOut.on("mousedown", () => {
+        app.zoomOut(true);
+    });
+
+    zoomOut.on("mouseup", () => {
+        app.zoomOut(false);
     });
 });
