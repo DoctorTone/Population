@@ -51,7 +51,7 @@ const APPCONFIG = {
         y: 25,
         z: 1
     },
-    VALUE_OFFSET: 20,
+    VALUE_OFFSET: 30,
     MILLION: 1000000
 }
 

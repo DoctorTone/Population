@@ -110,6 +110,9 @@ class Framework extends BaseApp {
                         countryScale *= APPCONFIG.SCALE_FACTOR;
                         this.countryColumns[i].scale.set(1, countryScale, 1);
                         this.countryColumns[i].position.y = countryScale*APPCONFIG.COLUMN_HEIGHT/2;
+                        // Labels
+                        this.populationLabels[i].setHeight((countryScale*APPCONFIG.COLUMN_HEIGHT) + APPCONFIG.VALUE_OFFSET);
+                        this.populationLabels[i].setText(year[i]);
                     }
                     ++this.currentYear;
                     let displayYear = this.displayYear + this.currentYear;
