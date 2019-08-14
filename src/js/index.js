@@ -13,6 +13,9 @@ class Framework extends BaseApp {
         this.completed = false;
         this.displayYear = 1971;
         this.labelManager = new LabelManager();
+        this.cameraRotate = false;
+        this.rotSpeed = Math.PI/20;
+        this.rotDirection = 1;
     }
 
     setContainer(container) {
@@ -123,6 +126,10 @@ class Framework extends BaseApp {
             }
         }
 
+        if (this.cameraRotate) {
+            this.root.rotation.y += (this.rotSpeed * this.rotDirection * delta);
+        }
+
         super.update();
     }
 
@@ -139,6 +146,11 @@ class Framework extends BaseApp {
         elem.attr("src", "images/play-button.png");
         this.currentYear = 0;
     }
+
+    rotateCamera(status, direction) {
+        this.rotDirection = direction === APPCONFIG.RIGHT ? 1 : -1;
+        this.cameraRotate = status;
+    }
 }
 
 $(document).ready( () => {
@@ -151,8 +163,29 @@ $(document).ready( () => {
 
     app.run();
 
+    // Elements
+    let play = $("#play");
+    let rotateLeft = $("#rotateLeft");
+    let rotateRight = $("#rotateRight");
+
     // Play controls
-    $("#play").on("click", () => {
+    play.on("click", () => {
         app.toggleAnimation();
+    });
+
+    rotateLeft.on("mousedown", () => {
+        app.rotateCamera(true, APPCONFIG.LEFT);
+    });
+
+    rotateLeft.on("mouseup", () => {
+        app.rotateCamera(false);
+    });
+
+    rotateRight.on("mousedown", () => {
+        app.rotateCamera(true, APPCONFIG.RIGHT);
+    });
+
+    rotateRight.on("mouseup", () => {
+        app.rotateCamera(false);
     });
 });

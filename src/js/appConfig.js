@@ -52,6 +52,8 @@ const APPCONFIG = {
         z: 1
     },
     VALUE_OFFSET: 30,
+    RIGHT: 1,
+    LEFT: 0,
     MILLION: 1000000
 }
 

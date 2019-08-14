@@ -30,3 +30,14 @@ body {
 #controls img {
     width: 100%;
 }
+#rotate {
+    bottom: 5%;
+    right: 1%;
+    width: 8%;
+}
+#rotate button {
+    width: 45%;
+}
+#rotate img {
+    width: 100%;
+}
