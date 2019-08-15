@@ -4,6 +4,7 @@ import { APPCONFIG } from "./appConfig";
 import { BaseApp } from "./baseApp";
 import { LabelManager } from "./LabelManager";
 import populationData from "../../data/populationData.json";
+import bootstrap from "bootstrap";
 
 class Framework extends BaseApp {
     constructor() {
@@ -277,5 +278,9 @@ $(document).ready( () => {
 
     zoomOut.on("mouseup", () => {
         app.zoomOut(false);
+    });
+
+    $("#info").on("click", () => {
+        $("#infoModal").modal();
     });
 });
