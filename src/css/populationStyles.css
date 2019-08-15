@@ -54,7 +54,7 @@ body {
     width: 45%;
 }
 #rotate img {
-    width: 100%;
+    width: 150%;
 }
 #info {
     bottom: 1%;
@@ -66,15 +66,32 @@ body {
 }
 
 /* Small screen - landscape */
-@media (min-width: 576px) {
+@media (min-width: 576px) and (orientation: landscape) {
     #rotate {
         bottom: 12%;
         width: 10%;
+    }
+    #rotate img {
+        width: 300%;
     }
     #controls img {
         width: 50%;
     }
     #info {
         width: 7.5%;
+    }
+}
+
+/* Small screen */
+@media (min-width: 576px) {
+    #rotate {
+        top: 12.5%;
+        width: 15%;
+    }
+    #rotate img {
+        width: 100%;
+    }
+    #controls img {
+        width: 75%;
     }
 }
