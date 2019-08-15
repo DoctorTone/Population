@@ -114,5 +114,32 @@ body {
 
 /* iPad in landscape */
 @media (min-width: 992px) {
-    
+    #rotate {
+        width: 10%;
+    }
+    #controls img {
+        width: 50%;
+    }
+    #info {
+        width: 6%;
+    }
+}
+
+/* Larger screens */
+@media (min-width: 1200px) {
+    .titleLeft h1 {
+        font-size: 2rem;
+    }
+    .titleLeft h3 {
+        font-size: 1.25rem;
+    }
+    #rotate {
+        width: 7.5%;
+    }
+    #controls img {
+        width: 40%;
+    }
+    #info {
+        width: 5%;
+    }
 }
