@@ -5,6 +5,9 @@ body {
     color: orange;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.modal {
+    color: black;
+}
 .titleLeft {
     position: absolute;
     top: 0;
