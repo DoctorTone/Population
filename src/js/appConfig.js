@@ -11,7 +11,7 @@ const APPCONFIG = {
     NUM_COUNTRIES: 4,
     UPDATE_INTERVAL: 0.15,
     TIME_SPAN: 48,
-    SCALE_FACTOR: 0.85,
+    SCALE_FACTOR: 0.8,
     // England, Wales, Northern Ireland, Scotland
     COUNTRY_COLOURS: [
         0xff0000,
