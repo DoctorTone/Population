@@ -95,3 +95,24 @@ body {
         width: 75%;
     }
 }
+
+/* iPad style screens */
+@media (min-width: 768px) {
+    .titleLeft h1 {
+        font-size: 1.5rem;
+    }
+    .titleLeft h3 {
+        font-size: 1.25rem;
+    }
+    #controls img {
+        width: 60%;
+    }
+    #info {
+        width: 7%;
+    }
+}
+
+/* iPad in landscape */
+@media (min-width: 992px) {
+    
+}
