@@ -6,12 +6,12 @@ const SceneConfig = {
     pointLightColour: 0xffffff,
     CameraPos: {
         x: 0,
-        y: 1000,
-        z: 1200
+        y: 1174,
+        z: 1064
     },
     LookAtPos: {
         x: 0,
-        y: 0,
+        y: 200,
         z: 0
     },
     NEAR_PLANE: 0.1,
