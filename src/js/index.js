@@ -232,6 +232,7 @@ $(document).ready( () => {
         app.toggleAnimation();
     });
 
+    // Mouse interaction
     rotateLeft.on("mousedown", () => {
         app.rotateCamera(true, APPCONFIG.LEFT);
     });
@@ -280,6 +281,55 @@ $(document).ready( () => {
         app.zoomOut(false);
     });
 
+    // Touch interaction
+    rotateLeft.on("touchstart", () => {
+        app.rotateCamera(true, APPCONFIG.LEFT);
+    });
+
+    rotateLeft.on("touchend", () => {
+        app.rotateCamera(false);
+    });
+
+    rotateRight.on("touchstart", () => {
+        app.rotateCamera(true, APPCONFIG.RIGHT);
+    });
+
+    rotateRight.on("touchend", () => {
+        app.rotateCamera(false);
+    });
+
+    rotateUp.on("touchstart", () => {
+        app.rotateCamera(true, APPCONFIG.UP);
+    });
+
+    rotateUp.on("touchend", () => {
+        app.rotateCamera(false);
+    });
+
+    rotateDown.on("touchstart", () => {
+        app.rotateCamera(true, APPCONFIG.DOWN);
+    });
+
+    rotateDown.on("touchend", () => {
+        app.rotateCamera(false);
+    });
+
+    zoomIn.on("touchstart", () => {
+        app.zoomIn(true);
+    });
+
+    zoomIn.on("touchend", () => {
+        app.zoomIn(false);
+    });
+
+    zoomOut.on("touchstart", () => {
+        app.zoomOut(true);
+    });
+
+    zoomOut.on("touchend", () => {
+        app.zoomOut(false);
+    });
+    
     $("#info").on("click", () => {
         $("#infoModal").modal();
     });

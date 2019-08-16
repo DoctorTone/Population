@@ -52,9 +52,10 @@ body {
 }
 #rotate button {
     width: 45%;
+    padding: 0.2rem 0.4rem;
 }
 #rotate img {
-    width: 150%;
+    width: 100%;
 }
 #info {
     bottom: 1%;
@@ -65,34 +66,28 @@ body {
     width: 100%;
 }
 
-/* Small screen - landscape */
-@media (min-width: 576px) and (orientation: landscape) {
-    #rotate {
-        bottom: 12%;
-        width: 10%;
-    }
-    #rotate img {
-        width: 300%;
-    }
-    #controls img {
-        width: 50%;
-    }
-    #info {
-        width: 7.5%;
-    }
-}
-
 /* Small screen */
 @media (min-width: 576px) {
     #rotate {
         top: 12.5%;
         width: 15%;
     }
-    #rotate img {
-        width: 100%;
-    }
     #controls img {
         width: 75%;
+    }
+}
+
+/* Small screen - landscape */
+@media (min-width: 576px) and (orientation: landscape) {
+    #rotate {
+        top: 22.5%;
+        width: 12%;
+    }
+    #controls img {
+        width: 50%;
+    }
+    #info {
+        width: 7.5%;
     }
 }
 
