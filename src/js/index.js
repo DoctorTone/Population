@@ -346,7 +346,7 @@ $(document).ready( () => {
         app.resetView();
     });
 
-    $("#info").on("click", () => {
+    $("#instructions").on("click", () => {
         $("#infoModal").modal();
     });
 });
