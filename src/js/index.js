@@ -211,6 +211,12 @@ class Framework extends BaseApp {
     zoomOut(status) {
         this.zoomingOut = status;
     }
+
+    resetView() {
+        this.controls.reset();
+        this.camera.position.copy(SceneConfig.CameraPos);
+        this.controls.target.copy(SceneConfig.LookAtPos);
+    }
 }
 
 $(document).ready( () => {
@@ -231,6 +237,7 @@ $(document).ready( () => {
     let rotateDown = $("#rotateDown");
     let zoomIn = $("#zoomIn");
     let zoomOut = $("#zoomOut");
+    let resetCamera = $("#resetCamera");
 
     // Play controls
     play.on("click", () => {
@@ -335,6 +342,10 @@ $(document).ready( () => {
         app.zoomOut(false);
     });
     
+    resetCamera.on("click", () => {
+        app.resetView();
+    });
+
     $("#info").on("click", () => {
         $("#infoModal").modal();
     });
