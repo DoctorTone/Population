@@ -127,6 +127,11 @@ class Framework extends BaseApp {
                     ++this.currentYear;
                     let displayYear = this.displayYear + this.currentYear;
                     $(".year").html(displayYear);
+                    // Population values for all countries
+                    $("#england").html(year[0]);
+                    $("#scotland").html(year[3]);
+                    $("#wales").html(year[1]);
+                    $("#ireland").html(year[2]);
                 } else {
                     this.resetAnimation();
                 }
