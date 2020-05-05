@@ -29,7 +29,7 @@ body {
     width: 100%;
 }
 #controls {
-    width: 5%;
+    width: 6%;
     top: 1%;
     right: 1%;
 }
@@ -48,13 +48,10 @@ body {
 #rotate img {
     width: 100%;
 }
-#info {
+#instructions {
     bottom: 1%;
     right: 1%;
-    width: 10%;
-}
-#info img {
-    width: 100%;
+    width: 4%;
 }
 
 /* Small screen */
