@@ -126,7 +126,7 @@ class Framework extends BaseApp {
                     }
                     ++this.currentYear;
                     let displayYear = this.displayYear + this.currentYear;
-                    $("#year").html(displayYear);
+                    $(".year").html(displayYear);
                 } else {
                     this.resetAnimation();
                 }
