@@ -14,13 +14,6 @@ body {
 }
 .panel {
     position: absolute;
-    text-align: center;
-}
-.panel h3 {
-    font-size: 1.2rem;
-}
-.panel p {
-    margin-bottom: 0.25rem;
 }
 .copyright {
     position: absolute;
@@ -53,7 +46,10 @@ body {
     right: 1%;
     width: 4%;
 }
-
+#information {
+    top: 20%;
+    left: 2.5%;
+}
 /* Small screen */
 @media (min-width: 576px) {
     #rotate {
