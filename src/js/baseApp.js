@@ -186,9 +186,10 @@ export class BaseApp {
 
         //this.controls.disableMovement();
         // Disable controls
-        this.controls.noRotate = true;
-	    this.controls.noZoom = true;
-        this.controls.noPan = true;
+        const disableMovement = false;
+        this.controls.noRotate = disableMovement;
+	    this.controls.noZoom = disableMovement;
+        this.controls.noPan = disableMovement;
 
         this.controls.keys = [ 65, 83, 68 ];
 
