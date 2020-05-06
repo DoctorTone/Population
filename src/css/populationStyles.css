@@ -22,31 +22,19 @@ body {
     width: 100%;
 }
 #controls {
-    width: 6%;
-    top: 15%;
-    right: 1%;
+    width: 12%;
+    top: 20%;
+    right: 2%;
 }
 #sliderControls {
     top: 7.5%;
     left: 50%;
     z-index: 100;
 }
-#rotate {
-    bottom: 50%;
-    left: 1%;
-    width: 20%;
-}
-#rotate button {
-    width: 45%;
-    padding: 0.2rem 0.4rem;
-}
-#rotate img {
-    width: 100%;
-}
 #instructions {
     bottom: 1%;
     right: 1%;
-    width: 4%;
+    width: 10%;
 }
 #information {
     top: 20%;
