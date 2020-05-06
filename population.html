@@ -33,11 +33,12 @@
           </div>
       </div>
   </div>
+
+  <label for="customRange1">Example range</label>
+<input type="range" class="custom-range" id="customRange1">
+
   <div id="WebGL-Output">
-    <div class="title w-100 text-left pl-5 pt-3">
-      <h1>UK Additional Population</h1>
-      <h3>1971 - 2018</h3>
-    </div>
+    
     <div class="panel" id="controls">
       <h5>Year: <span class="year">1971</span></h5>
       <div>
@@ -61,10 +62,7 @@
       <button type="button" id="resetCamera" class="btn btn-primary">Reset view</button>
     </div>
   </div> 
-  <div id="sliderControls" class="panel w-100 text-right pr-5">
-    <label for="yearSlider">Year</label>
-    <input type="range" min="1971" max="2018" value="1971" id="yearSlider" class="slider w-50 mr-5">
-  </div>
+  
 
   <script src="./src/js/index.js"></script>
 </body>

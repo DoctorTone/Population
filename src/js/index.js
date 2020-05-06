@@ -4,7 +4,7 @@ import { APPCONFIG } from "./appConfig";
 import { BaseApp } from "./baseApp";
 import { LabelManager } from "./LabelManager";
 import populationData from "../../data/populationData.json";
-import bootstrap from "bootstrap";
+//import bootstrap from "bootstrap";
 
 class Framework extends BaseApp {
     constructor() {
@@ -346,6 +346,9 @@ $(document).ready( () => {
         app.resetView();
     });
 
+    $(document).on('input change', '#customRange1', function() {
+        console.log( $(this).val() );
+    });
     $("#instructions").on("click", () => {
         $("#infoModal").modal();
     });
