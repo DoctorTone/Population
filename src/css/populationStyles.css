@@ -12,6 +12,15 @@ body {
     position: absolute;
     top: 0;
 }
+.title span {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 1.5rem;
+}
+span.lesserTitle {
+    font-size: 1.15rem;
+}
 .panel {
     position: absolute;
 }
@@ -60,21 +69,43 @@ body {
 
 /* iPad style screens */
 @media (min-width: 768px) {
-    #info {
-        width: 7%;
+    #controls {
+        width: 15%;
+    }
+    #controls img {
+        width: 66%;
     }
 }
 
 /* iPad in landscape */
 @media (min-width: 992px) {
-    #info {
-        width: 6%;
+    #controls {
+        width: 12.5%;
     }
 }
 
 /* Larger screens */
 @media (min-width: 1200px) {
-    #info {
-        width: 4%;
+    #controls {
+        width: 9%;
+    }
+    #instructions {
+        width: 5%;
+    }
+}
+
+/* Full HD screens */
+@media (min-width: 1600px) {
+    #controls {
+        width: 6.75%;
+    }
+    #instructions {
+        width: 3.5%;
+    }
+    .title span {
+        font-size: 2rem;
+    }
+    span.lesserTitle {
+        font-size: 1.25rem;
     }
 }
