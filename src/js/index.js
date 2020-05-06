@@ -150,8 +150,6 @@ class Framework extends BaseApp {
         if (sliderYear) {
             this.currentYear = parseInt(sliderYear, 10);
         }
-        // DEBUG
-        console.log("Current year = ", this.currentYear);
 
         if(this.currentYear < APPCONFIG.TIME_SPAN) {
             let year = this.populationDiff[this.currentYear];
