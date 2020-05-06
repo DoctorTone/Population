@@ -46,8 +46,15 @@ body {
 }
 /* Small screen - landscape */
 @media (min-width: 576px) and (orientation: landscape) {
-    #info {
+    #information {
+        top: 20%;
+    }
+    #controls {
+        top: 25%;
         width: 7.5%;
+    }
+    #instructions {
+        width: 7%;
     }
 }
 
