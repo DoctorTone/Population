@@ -76,6 +76,11 @@ class Framework extends BaseApp {
         let yearOne = populationData[0];
         let currentYear;
         let diff;
+
+        // Diff in 1st year is 0
+        yearlyDiff.push(0, 0, 0, 0);
+        populationDiff.push([...yearlyDiff]);
+        yearlyDiff.length = 0;
         for (let year=1; year<APPCONFIG.TIME_SPAN; ++year) {
             currentYear = populationData[year];
             for (let i=0; i<APPCONFIG.NUM_COUNTRIES; ++i) {
@@ -113,30 +118,8 @@ class Framework extends BaseApp {
             if (this.elapsedTime >= APPCONFIG.UPDATE_INTERVAL) {
                 this.elapsedTime = 0;
                 // Get next year's data
-                if(this.currentYear < (APPCONFIG.TIME_SPAN-1)) {
-                    let year = this.populationDiff[this.currentYear];
-                    let countryScale;
-                    for (let i=0; i<APPCONFIG.NUM_COUNTRIES; ++i) {
-                        countryScale = year[i]/100000;
-                        countryScale *= APPCONFIG.SCALE_FACTOR;
-                        this.countryColumns[i].scale.set(1, countryScale, 1);
-                        this.countryColumns[i].position.y = countryScale*APPCONFIG.COLUMN_HEIGHT/2;
-                        // Labels
-                        this.populationLabels[i].setHeight((countryScale*APPCONFIG.COLUMN_HEIGHT) + APPCONFIG.VALUE_OFFSET);
-                        this.populationLabels[i].setText(year[i]);
-                    }
-                    ++this.currentYear;
-                    let displayYear = this.displayYear + this.currentYear;
-                    $(".year").html(displayYear);
-                    $("#yearControls").val(displayYear);
-                    // Population values for all countries
-                    $("#england").html(year[0]);
-                    $("#scotland").html(year[3]);
-                    $("#wales").html(year[1]);
-                    $("#ireland").html(year[2]);
-                } else {
-                    this.resetAnimation();
-                }
+                this.updateYear();
+                ++this.currentYear;
             }
         }
 
@@ -161,6 +144,40 @@ class Framework extends BaseApp {
         }
 
         super.update();
+    }
+
+    updateYear(sliderYear) {
+        if (sliderYear) {
+            this.currentYear = parseInt(sliderYear, 10);
+        }
+        // DEBUG
+        console.log("Current year = ", this.currentYear);
+
+        if(this.currentYear < APPCONFIG.TIME_SPAN) {
+            let year = this.populationDiff[this.currentYear];
+            let countryScale;
+            for (let i=0; i<APPCONFIG.NUM_COUNTRIES; ++i) {
+                countryScale = year[i]/100000;
+                countryScale *= APPCONFIG.SCALE_FACTOR;
+                this.countryColumns[i].scale.set(1, countryScale, 1);
+                this.countryColumns[i].position.y = countryScale*APPCONFIG.COLUMN_HEIGHT/2;
+                // Labels
+                this.populationLabels[i].setHeight((countryScale*APPCONFIG.COLUMN_HEIGHT) + APPCONFIG.VALUE_OFFSET);
+                this.populationLabels[i].setText(year[i]);
+            }
+            let displayYear = this.displayYear + this.currentYear;
+            $(".year").html(displayYear);
+            if (!sliderYear) {
+                $("#yearControls").val(this.currentYear);
+            }
+            // Population values for all countries
+            $("#england").html(year[0]);
+            $("#scotland").html(year[3]);
+            $("#wales").html(year[1]);
+            $("#ireland").html(year[2]);
+        } else {
+            this.resetAnimation();
+        }
     }
 
     toggleAnimation() {
@@ -232,8 +249,11 @@ $(document).ready( () => {
     app.run();
 
     // Elements
-    let play = $("#play");
-    let resetCamera = $("#resetCamera");
+    const play = $("#play");
+    const resetCamera = $("#resetCamera");
+    const instructions = $("#instructions");
+    const yearControls = $("#yearControls");
+    let currentYear;
 
     // Play controls
     play.on("click", () => {
@@ -244,7 +264,12 @@ $(document).ready( () => {
         app.resetView();
     });
 
-    $("#instructions").on("click", () => {
+    instructions.on("click", () => {
         $("#infoModal").modal();
     });
+
+    yearControls.on("input", () => {
+        currentYear = yearControls.val();
+        app.updateYear(currentYear);
+    })
 });
