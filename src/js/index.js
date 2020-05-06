@@ -1,10 +1,11 @@
 import $ from "jquery";
 import * as THREE from "three";
 import { APPCONFIG } from "./appConfig";
+import { SceneConfig } from "./sceneConfig";
 import { BaseApp } from "./baseApp";
 import { LabelManager } from "./LabelManager";
 import populationData from "../../data/populationData.json";
-//import bootstrap from "bootstrap";
+import bootstrap from "bootstrap";
 
 class Framework extends BaseApp {
     constructor() {
@@ -231,12 +232,6 @@ $(document).ready( () => {
 
     // Elements
     let play = $("#play");
-    let rotateLeft = $("#rotateLeft");
-    let rotateRight = $("#rotateRight");
-    let rotateUp = $("#rotateUp");
-    let rotateDown = $("#rotateDown");
-    let zoomIn = $("#zoomIn");
-    let zoomOut = $("#zoomOut");
     let resetCamera = $("#resetCamera");
 
     // Play controls
@@ -244,111 +239,10 @@ $(document).ready( () => {
         app.toggleAnimation();
     });
 
-    // Mouse interaction
-    rotateLeft.on("mousedown", () => {
-        app.rotateCamera(true, APPCONFIG.LEFT);
-    });
-
-    rotateLeft.on("mouseup", () => {
-        app.rotateCamera(false);
-    });
-
-    rotateRight.on("mousedown", () => {
-        app.rotateCamera(true, APPCONFIG.RIGHT);
-    });
-
-    rotateRight.on("mouseup", () => {
-        app.rotateCamera(false);
-    });
-
-    rotateUp.on("mousedown", () => {
-        app.rotateCamera(true, APPCONFIG.UP);
-    });
-
-    rotateUp.on("mouseup", () => {
-        app.rotateCamera(false);
-    });
-
-    rotateDown.on("mousedown", () => {
-        app.rotateCamera(true, APPCONFIG.DOWN);
-    });
-
-    rotateDown.on("mouseup", () => {
-        app.rotateCamera(false);
-    });
-
-    zoomIn.on("mousedown", () => {
-        app.zoomIn(true);
-    });
-
-    zoomIn.on("mouseup", () => {
-        app.zoomIn(false);
-    });
-
-    zoomOut.on("mousedown", () => {
-        app.zoomOut(true);
-    });
-
-    zoomOut.on("mouseup", () => {
-        app.zoomOut(false);
-    });
-
-    // Touch interaction
-    rotateLeft.on("touchstart", () => {
-        app.rotateCamera(true, APPCONFIG.LEFT);
-    });
-
-    rotateLeft.on("touchend", () => {
-        app.rotateCamera(false);
-    });
-
-    rotateRight.on("touchstart", () => {
-        app.rotateCamera(true, APPCONFIG.RIGHT);
-    });
-
-    rotateRight.on("touchend", () => {
-        app.rotateCamera(false);
-    });
-
-    rotateUp.on("touchstart", () => {
-        app.rotateCamera(true, APPCONFIG.UP);
-    });
-
-    rotateUp.on("touchend", () => {
-        app.rotateCamera(false);
-    });
-
-    rotateDown.on("touchstart", () => {
-        app.rotateCamera(true, APPCONFIG.DOWN);
-    });
-
-    rotateDown.on("touchend", () => {
-        app.rotateCamera(false);
-    });
-
-    zoomIn.on("touchstart", () => {
-        app.zoomIn(true);
-    });
-
-    zoomIn.on("touchend", () => {
-        app.zoomIn(false);
-    });
-
-    zoomOut.on("touchstart", () => {
-        app.zoomOut(true);
-    });
-
-    zoomOut.on("touchend", () => {
-        app.zoomOut(false);
-    });
-    
     resetCamera.on("click", () => {
         app.resetView();
     });
 
-    $(document).on('input change', '#customRange1', function() {
-        console.log( $(this).val() );
-    });
     $("#instructions").on("click", () => {
         $("#infoModal").modal();
     });

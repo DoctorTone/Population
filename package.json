@@ -20,10 +20,10 @@
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.4.1",
     "controlkit": "^0.1.9",
     "jquery": "^3.5.1",
-    "popper.js": "^1.15.0",
+    "popper.js": "^1.16.1",
     "textures": "^1.2.2",
     "three": "^0.116.1",
     "three-trackballcontrols": "0.0.8"
