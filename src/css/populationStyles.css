@@ -49,6 +49,17 @@ span.lesserTitle {
     top: 18%;
     left: 2.5%;
 }
+#information p {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+#information p.mainHeader {
+    font-size: 1.25rem;
+}
+#information p.subHeader {
+    font-size: 1rem;
+}
 #reset {
     bottom: 15%;
     left: 2%;
@@ -106,6 +117,12 @@ span.lesserTitle {
         font-size: 2rem;
     }
     span.lesserTitle {
+        font-size: 1.25rem;
+    }
+    #information p.mainHeader {
+        font-size: 1.5rem;
+    }
+    #information p.subHeader {
         font-size: 1.25rem;
     }
 }
