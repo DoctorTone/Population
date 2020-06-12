@@ -4,6 +4,8 @@
   "description": "Visualise population of UK over time.",
   "main": "index.js",
   "scripts": {
+    "start": "npx parcel population.html",
+    "build": "npx parcel build population.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -88,6 +88,11 @@ span.lesserTitle {
     }
 }
 
+@media (min-width: 768px) and (orientation: landscape) {
+    #controls {
+        width: 12%;
+    }
+}
 /* iPad in landscape */
 @media (min-width: 992px) {
     #controls {
