@@ -234,6 +234,14 @@ class Framework extends BaseApp {
         this.camera.position.copy(SceneConfig.CameraPos);
         this.controls.target.copy(SceneConfig.LookAtPos);
     }
+
+    stopNotifications(elemList) {
+        for(let i=0, numElems=elemList.length; i<numElems; ++i) {
+            $('#' + elemList[i]).contextmenu(() => {
+                return false;
+            });
+        }
+    }
 }
 
 $(document).ready( () => {
@@ -269,5 +277,9 @@ $(document).ready( () => {
     yearControls.on("input", () => {
         currentYear = yearControls.val();
         app.updateYear(currentYear);
-    })
+    });
+
+    // Prevent context menu being displayed
+    let elemList = ["sliderControls"];
+    app.stopNotifications(elemList);
 });
