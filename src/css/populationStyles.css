@@ -111,6 +111,12 @@ span.lesserTitle {
     #controls {
         width: 9%;
     }
+    #sliderControls {
+        left: 37.5%;
+    }
+    #controls {
+        top: 5%;
+    }
     #instructions {
         width: 5%;
     }
